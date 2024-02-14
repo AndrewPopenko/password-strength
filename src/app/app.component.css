@@ -1,0 +1,20 @@
+.wrapper {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+}
+
+.control-box {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 25px 0;
+}
+
+.note {
+  text-align: center;
+  width: 300px;
+}

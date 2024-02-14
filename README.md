@@ -1,27 +1,45 @@
-# PasswordStrength
+# Password Strength Evaluator
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.1.3.
+## Project Overview
 
-## Development server
+This project introduces a password strength evaluator designed
+to enhance security practices by assessing password complexity in real-time.
+Utilizing Angular for the frontend and Angular Material for the UI components,
+the application provides immediate feedback on the entered password's strength,
+categorized as "easy," "medium," or "strong."
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Features
 
-## Code scaffolding
+    Real-time password strength evaluation
+    Dynamic UI feedback with Angular Material
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Prerequisites
 
-## Build
+    Node.js
+    Angular CLI
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Installation
 
-## Running unit tests
+Clone the repository:
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+    git clone git@github.com:AndrewPopenko/password-strength.git
 
-## Running end-to-end tests
+Navigate to the project directory:
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+    cd password-strength
 
-## Further help
+Install dependencies:
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+    npm install
+
+Running the Application Development Server:
+
+    ng serve
+
+Access the application at http://localhost:4200/.
+
+## Evaluating Password Strength
+
+Enter a password in the input field to receive immediate feedback on its strength.
+The feedback criteria are based on character variety and length,
+ensuring users create robust passwords.
