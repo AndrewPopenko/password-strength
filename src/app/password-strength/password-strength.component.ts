@@ -6,7 +6,6 @@ import { PasswordStrength, ValidatorService } from '../../service/validator.serv
   standalone: true,
   imports: [],
   templateUrl: './password-strength.component.html',
-  styleUrl: './password-strength.component.css'
 })
 export class PasswordStrengthComponent {
   @Input() password: string = '';
@@ -24,12 +23,12 @@ export class PasswordStrengthComponent {
     const result = this.validatorService.evaluateStrength(this.password);
     // Reset hint colors
     this.hintColor = ['gray', 'gray', 'gray'];
-  
+
     if (!this.password) {
       // Keep default gray if no password is entered
       return;
     }
-  
+
     switch (result.strength) {
       case PasswordStrength.Strong:
         this.hintColor = ['green', 'green', 'green'];

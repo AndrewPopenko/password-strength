@@ -1,5 +1,5 @@
-import { Component, OnInit, forwardRef } from '@angular/core';
-import { ControlValueAccessor, FormGroup, FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { Component, forwardRef } from '@angular/core';
+import { ControlValueAccessor, FormsModule, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIcon } from '@angular/material/icon';
 import { MatInput } from '@angular/material/input';
@@ -9,7 +9,6 @@ import { MatInput } from '@angular/material/input';
   standalone: true,
   imports: [MatInput, MatFormFieldModule, FormsModule, MatIcon],
   templateUrl: './password-input.component.html',
-  styleUrls: ['./password-input.component.css'],
   providers: [
     {
       provide: NG_VALUE_ACCESSOR,
