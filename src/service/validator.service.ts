@@ -16,68 +16,20 @@ export type PasswordEvaluationResult = {
 })
 export class ValidatorService {
 
-  constructor() {
-  }
+  constructor() {}
 
   evaluateStrength(currentPassword: string): PasswordEvaluationResult {
-    let hasLetter = false;
-    let hasDigit = false;
-    let hasSymbol = false;
     const isLenValid = currentPassword.length >= 8;
+    const hasLetter = /[a-zA-Z]/.test(currentPassword);
+    const hasDigit = /\d/.test(currentPassword);
+    const hasSymbol = /[^a-zA-Z\d]/.test(currentPassword);
 
-    for (let ch of currentPassword) {
-      if (this.isChar(ch)) {
-        hasLetter = true;
-      } else if (this.isDigit(ch)) {
-        hasDigit = true;
-      } else if (this.isSymbol(ch)) {
-        hasSymbol = true;
-      }
-      if (hasLetter && hasDigit && hasSymbol) {
-        break;
-      }
-    }
-
-    if (hasLetter && hasDigit && hasSymbol) {
-      return this.strongPassword(isLenValid)
-    } else if (hasLetter && (hasDigit || hasSymbol) || (hasDigit && hasSymbol)) {
-      return this.mediumPassword(isLenValid)
-    }
-
-    return this.weakPassword(isLenValid);
-  }
-
-  private isDigit(ch: string): boolean {
-    if (ch === ' ') return false;
-    return +ch >= 0 && +ch <= 9;
-  }
-
-  private isChar(ch: string): boolean {
-    return ch.toLocaleLowerCase() >= 'a' && ch.toLocaleLowerCase() <= 'z';
-  }
-
-  private isSymbol(ch: string): boolean {
-    return !this.isChar(ch) && !this.isDigit(ch);
-  }
-
-  private weakPassword(isLenValid: boolean): PasswordEvaluationResult {
-    return {
-      strength: PasswordStrength.Easy,
-      validLength: isLenValid
-    };
-  }
-
-  private mediumPassword(isLenValid: boolean): PasswordEvaluationResult {
-    return {
-      strength: PasswordStrength.Medium,
-      validLength: isLenValid
-    }
-  }
-
-  private strongPassword(isLenValid: boolean): PasswordEvaluationResult {
-    return {
-      strength: PasswordStrength.Strong,
-      validLength: isLenValid
+    if (isLenValid && hasLetter && hasDigit && hasSymbol) {
+      return { strength: PasswordStrength.Strong, validLength: true };
+    } else if (isLenValid && (hasLetter || hasDigit || hasSymbol)) {
+      return { strength: PasswordStrength.Medium, validLength: true };
+    } else {
+      return { strength: PasswordStrength.Easy, validLength: isLenValid };
     }
   }
 }

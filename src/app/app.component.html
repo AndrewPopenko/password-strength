@@ -2,19 +2,11 @@
   <div class="note">
     You can check the strength of your password. Type your password into the input field below and check the result.
   </div>
-  <div class="control-box">
-    <mat-form-field>
-      <mat-label>Provide your password</mat-label>
-      <input matInput [(ngModel)]="password" [type]="hidePassword ? 'password' : 'text'" (input)="validate()">
-      <button mat-icon-button matSuffix (click)="hidePassword = !hidePassword">
-        <mat-icon>{{hidePassword ? 'visibility_off' : 'visibility'}}</mat-icon>
-      </button>
-    </mat-form-field>
-    <div class="len">Password length: {{ passwordLength }}</div>
-  </div>
+  <div class="control-box"></div>
+  <form [formGroup]="myForm">
+    <app-password-input formControlName="passwordCtrl"></app-password-input>
+  </form>
   <div class="strength-indicator">
-    <div [style.color]="hintColor[0]">The password is easy</div>
-    <div [style.color]="hintColor[1]">The password is medium</div>
-    <div [style.color]="hintColor[2]">The password is strong</div>
+    <app-password-strength [password]="password"></app-password-strength>
   </div>
 </div>
